@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+    <h:head>
+        <title>IAD_LW3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputScript library="js" name="click.js"/>
+        <h:outputScript library="js" name="page.js"/>
+        <h:outputScript library="js" name="graph.js" />
+
+    </h:head>
+    <h:body onload="drawGraph(document.getElementById('hiddenR').value); drawAllDots()">
+        <div id="header" class="header">
+            <div class="head">Группа P3212</div>
+            <div class="head">Ибраимов Эдем, Морозов Иван</div>
+            <div class="head">Вариант 40192</div>
+        </div>
+
+        <div class="wrapper">
+            <div class="left-column">
+                <canvas id="canvas" onclick="clickHandler(event)" width="400" height="400">
+                </canvas>
+            </div>
+            <div class="right-column">
+                <h:form id="main_form" prependId="false" >
+
+                    <p>Выберите X</p>
+                    <h:commandButton id="x1" onclick="changeX(1);" styleClass="button" value="-2" type="button"/>
+                    <h:commandButton id="x2" onclick="changeX(2);" styleClass="button" value="-1.5" type="button"/>
+                    <h:commandButton id="x3" onclick="changeX(3);" styleClass="button" value="-1" type="button"/>
+                    <h:commandButton id="x4" onclick="changeX(4);" styleClass="button" value="-0.5" type="button"/>
+                    <h:commandButton id="x5" onclick="changeX(5);" styleClass="button" value="0" type="button"/>
+                    <h:commandButton id="x6" onclick="changeX(6);" styleClass="button" value="0.5" type="button"/>
+                    <h:commandButton id="x7" onclick="changeX(7);" styleClass="button" value="1" type="button"/>
+                    <h:commandButton id="x8" onclick="changeX(8);" styleClass="button" value="1.5" type="button"/>
+                    <h:commandButton id="x9" onclick="changeX(9);" styleClass="button" value="2" type="button"/>
+                    <h:inputHidden id="hiddenX" value="#{mainBean.x}" />
+
+                    <p>Введите Y</p>
+                    <h:inputText value = "#{mainBean.y}" id="Y" title="y"
+                                 validatorMessage="Enter correct Y (from -3 to 3)">
+                        <f:validateDoubleRange minimum="-3.0" maximum="3.0" for="Y"/>
+                    </h:inputText>
+                    <br/>
+                    <h:message  for="Y" style="color:red"/>
+
+                    <p>Выберите R</p>
+                    <h:commandButton id="r1" onclick="changeR(1)" styleClass="button" value="1" type="button"/>
+                    <h:commandButton id="r2" onclick="changeR(2)" styleClass="button" value="1.5" type="button"/>
+                    <h:commandButton id="r3" onclick="changeR(3)" styleClass="button" value="2" type="button"/>
+                    <h:commandButton id="r4" onclick="changeR(4)" styleClass="button" value="2.5" type="button"/>
+                    <h:commandButton id="r5" onclick="changeR(5)" styleClass="button" value="3" type="button"/>
+
+                    <h:inputHidden id="hiddenR" value="#{mainBean.r}" />
+                    <br/>
+                    <h:commandButton id="check" value="Проверить" action="#{mainBean.addToList()}"  styleClass="download" type="submit">
+                        <f:ajax execute="main_form" onevent="addPointAfterRequest" render="canvas main_form results"/>
+                    </h:commandButton>
+                </h:form>
+            </div>
+        </div>
+
+        <div id="errors">
+
+        </div>
+<!--rendered="#{not empty mainBean.list}"-->
+        <h:dataTable value = "#{mainBean.list}" var = "point" id="results"  >
+            <h:column>
+                <f:facet name = "header">X</f:facet>
+                #{point.x}
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Y</f:facet>
+                #{point.y}
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">R</f:facet>
+                #{point.r}
+            </h:column>
+
+            <h:column>
+                <f:facet name = "header">Результат</f:facet>
+                #{point.inArea}
+            </h:column>
+        </h:dataTable>
+
+        <h:button styleClass="download" value="Янки гоу хом" outcome="toIndex"/>
+
+    </h:body>
+</f:view>
+</html>
