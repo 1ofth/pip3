@@ -58,8 +58,8 @@
 
                     <h:inputHidden id="hiddenR" value="#{mainBean.r}" />
                     <br/>
-                    <h:commandButton id="check" value="Проверить" action="#{mainBean.addToList()}"  styleClass="download" type="submit">
-                        <f:ajax execute="main_form" onevent="addPointAfterRequest" render="canvas main_form results"/>
+                    <h:commandButton id="check" value="Проверить" onclick="checkConnection()" action="#{mainBean.addToList()}" styleClass="download" type="submit">
+                        <f:ajax execute="main_form" onevent="addPointAfterRequest" render="canvas main_form results" />
                     </h:commandButton>
                 </h:form>
             </div>

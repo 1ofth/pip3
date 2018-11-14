@@ -1,22 +1,39 @@
 function addPointAfterRequest(data) {
-    if(data.status === "complete") {
+    if (data.status === "complete") {
         let arr = [4];
         let input = data.responseText.replace("<tr>", "").replace("</tr>", "");
         if (!input.includes("<span style=\"color:red\">Y")) {
-            input = input.substring(input.indexOf("<tr>")+4, input.indexOf("</tr>"));
+            input = input.substring(input.indexOf("<tr>") + 4, input.indexOf("</tr>"));
             for (let i = 0; i < 4; i++) {
-                arr[i] = input.substring(input.indexOf("<td>")+4, input.indexOf("</td>"));
+                arr[i] = input.substring(input.indexOf("<td>") + 4, input.indexOf("</td>"));
                 input = input.replace("<td>", "").replace("</td>", "");
             }
             drawDot(+arr[0], +arr[1], +arr[2],
-                +document.getElementById("hiddenR").value, arr[3].toString().includes("true") );
+                +document.getElementById("hiddenR").value, arr[3].toString().includes("true"));
         }
         // if (document.getElementById("x" + arr[0]) !== null) {
         //     document.getElementById("x" + arr[0]).style.color = '#fc0707';
         // }
         // document.getElementById("r" + arr[2]).style.color = '#fc0707';
     }
+}
+function checkConnection() {
+    if (navigator.onLine) {
+        return true;
+    }
+    document.getElementById("errors").innerHTML = "Отсутствует подключение к интернету";
+    document.getElementById("check").style.display = 'none';
+    document.getElementById("canvas").style.display = 'none';
 
+    let timerID = setInterval(() => {
+        if (navigator.onLine) {
+            document.getElementById("errors").innerHTML = "";
+            document.getElementById("check").style.display = 'block';
+            document.getElementById("canvas").style.display = 'inline-block';
+            clearInterval(timerID);
+        }
+    }, 2000);
+    return false;
 }
 
 function changeR(id) {
