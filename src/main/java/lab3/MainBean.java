@@ -37,13 +37,12 @@ public class MainBean implements Serializable{
     private static Connection connection;
     static {
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("oracle.jdbc.driver.OracleDriver");
 
             String login = "s243875";
-            String password = "xic778";
+            String password = "******";
             connection = DriverManager
-                    .getConnection("jdbc:postgresql://localhost:5432/studs",
-                            login, password);
+                    .getConnection("jdbc:oracle:thin:@localhost:1521/orbis", login, password);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.exit(0);
@@ -78,11 +77,11 @@ public class MainBean implements Serializable{
     public void addToList() {
         if (r < 0 || r > 5  || x < -2 || x > 2 || y < -3 || y > 5) return;
         try {
-            PreparedStatement pstmt = connection.prepareStatement("insert into points(x, y, r, result, session_id) values (?, ?, ?, ?, ?)");
+            PreparedStatement pstmt = connection.prepareStatement("insert into points  values (points_seq.nextval, ?, ?, ?, ?, ?)");
             pstmt.setDouble(1, x);
             pstmt.setDouble(2, y);
             pstmt.setDouble(3, r);
-            pstmt.setBoolean(4, checkArea());
+            pstmt.setString(4, checkArea() ? "y" : "n");
             pstmt.setString(5, userID);
             pstmt.executeUpdate();
             pstmt.close();
@@ -99,7 +98,7 @@ public class MainBean implements Serializable{
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Point p = new Point(rs.getDouble("x"), rs.getDouble("y"),
-                        rs.getDouble("r"), rs.getBoolean("result"));
+                        rs.getDouble("r"), rs.getString("result").equals("y"));
                 llist.addFirst(p);
             }
             pstmt.close();
