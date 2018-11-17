@@ -6,6 +6,8 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -48,6 +50,14 @@ public class MainBean implements Serializable{
             System.exit(0);
         }
         System.out.println("connected to the Helios");
+    }
+
+    public String getTime(){
+        return (new SimpleDateFormat("HH:mm:ss")).format(new Date());
+    }
+
+    public String getDate() {
+        return (new SimpleDateFormat("dd.MM.yyyy")).format(new Date());
     }
 
     public void setX(double x) {

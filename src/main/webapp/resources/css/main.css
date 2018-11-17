@@ -13,6 +13,23 @@ body {
     font-size: 25px;
 }
 
+#next_page_link{
+    padding-top: 20px;
+    /* add some rules*/
+}
+
+#clock{
+    /* add some rules*/
+}
+
+#interactive_clock_date{
+    /* add some rules*/
+}
+
+#interactive_clock_time{
+    /* add some rules*/
+}
+
 .header {
     background: #2c3e50;
     color: #fff;

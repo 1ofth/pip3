@@ -18,7 +18,7 @@
         <div id="header" class="header">
             <div class="head">Группа P3212</div>
             <div class="head">Ибраимов Эдем, Морозов Иван</div>
-            <div class="head">Вариант 40192</div>
+            <div class="head">Вариант 31517</div>
         </div>
 
         <div class="wrapper">
@@ -65,36 +65,35 @@
             </div>
         </div>
 
-        <div id="errors">
-
-        </div>
-
         <div class="results-box">
-<!--rendered="#{not empty mainBean.list}"-->
-        <h:dataTable value = "#{mainBean.list}" var = "point" id = "results">
 
-            <h:column>
-                <f:facet name = "header">X</f:facet>
-                #{point.x}
-            </h:column>
+            <div id="errors">
+            </div>
 
-            <h:column>
-                <f:facet name = "header">Y</f:facet>
-                #{point.y}
-            </h:column>
+            <h:dataTable value = "#{mainBean.list}" var = "point" id = "results">
 
-            <h:column>
-                <f:facet name = "header">R</f:facet>
-                #{point.r}
-            </h:column>
+                <h:column>
+                    <f:facet name = "header">X</f:facet>
+                    #{point.x}
+                </h:column>
 
-            <h:column>
-                <f:facet name = "header">Результат</f:facet>
-                #{point.inArea}
-            </h:column>
-        </h:dataTable>
+                <h:column>
+                    <f:facet name = "header">Y</f:facet>
+                    #{point.y}
+                </h:column>
 
-        <h:button styleClass="download" value="Янки гоу хом" outcome="toIndex"/>
+                <h:column>
+                    <f:facet name = "header">R</f:facet>
+                    #{point.r}
+                </h:column>
+
+                <h:column>
+                    <f:facet name = "header">Результат</f:facet>
+                    #{point.inArea}
+                </h:column>
+            </h:dataTable>
+
+            <h:button styleClass="download" value="Янки гоу хом" outcome="toIndex"/>
         </div>
     </h:body>
 </f:view>
