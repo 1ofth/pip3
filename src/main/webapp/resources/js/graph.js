@@ -13,7 +13,7 @@ function drawDot(x, y, r, R, answer) {
             ctx.beginPath();
             let indent = xOrtPosition / 10;
             ctx.arc(xOrtPosition + x * indent * 5 / R, yOrtPosition - y * indent * 5 / R, 2, 0, Math.PI * 2);
-            ctx.fillStyle =  answer ? "green" : "red";
+            ctx.fillStyle =  answer ? "red" : "blue";
             ctx.fill();
 
             ctx.closePath();
@@ -82,36 +82,36 @@ function drawGraph(R){
     drawAllDots();
 
     function eklm(){
+        // takaya magia. Ne smotrite suda
         ctx.beginPath();
-        if(R<3) {
+        if(R==1) {
+            ctx.rect(xOrtPosition - 16 / R * indent - indent,
+                yOrtPosition - 12 / R * indent - indent,
+                30 / R * indent + 2 * indent,
+                24 / R * indent + 2 * indent);
+        } else if(R*1.0===1.5) {
+            ctx.rect(xOrtPosition - 8.5 / R * indent - indent,
+                yOrtPosition - 15 / R * indent - indent,
+                17 / R * indent + 2 * indent,
+                30 / R * indent + 2 * indent);
+        } else if(R==2) {
             ctx.rect(xOrtPosition - 8 / R * indent - indent,
-                yOrtPosition - 20 / R * indent - indent,
+                yOrtPosition - 13 / R * indent - indent,
                 16 / R * indent + 2 * indent,
-                32 / R * indent + 2 * indent);
-            ctx.closePath();
-            ctx.stroke();
-        } else if(R===3) {
-            ctx.rect(xOrtPosition - 8 / R * indent -1.1/2*indent,
-                yOrtPosition - 20 / R * indent - 1.75*indent,
-                16 / R * indent + indent,
-                32 / R * indent + 2.8 * indent);
-            ctx.closePath();
-            ctx.stroke();
-        } else if(R===4) {
-            ctx.rect(xOrtPosition - 8 / R * indent -1.1/2*indent,
-                yOrtPosition - 20 / R * indent - 1.3*indent,
-                16 / R * indent + indent,
-                32 / R * indent + 2.1 * indent);
-            ctx.closePath();
-            ctx.stroke();
-        } else if(R === 5){
-            ctx.rect(xOrtPosition - 8 / R * indent -1/2*indent,
-                yOrtPosition - 20 / R * indent - 1.1*indent,
-                16 / R * indent + indent,
-                32 / R * indent + 1.7 * indent);
-            ctx.closePath();
-            ctx.stroke();
+                26 / R * indent + 2 * indent);
+        } else if(R*1.0===2.5) {
+            ctx.rect(xOrtPosition - 8 / R * indent - indent,
+                yOrtPosition - 12.8 / R * indent - indent,
+                16 / R * indent + 2 * indent,
+                25.8 / R * indent + 2 * indent);
+        } else if(R==3) {
+            ctx.rect(xOrtPosition - 8 / R * indent - 0.8*indent,
+                yOrtPosition - 12 / R * indent - indent,
+                16 / R * indent + 1.6 * indent,
+                24 / R * indent + 2 * indent);
         }
+        ctx.closePath();
+        ctx.stroke();
     }
 
     function drawAxis(){

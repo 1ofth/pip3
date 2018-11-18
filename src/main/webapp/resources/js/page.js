@@ -1,3 +1,9 @@
+function initializeChart(){
+    document.getElementById("hiddenR").value = "1";
+    document.getElementById("hiddenX").value = "0";
+    document.getElementById("Y").value = "0";
+}
+
 function addPointAfterRequest(data) {
     if (data.status === "complete") {
         let arr = [4];
@@ -11,12 +17,9 @@ function addPointAfterRequest(data) {
             drawDot(+arr[0], +arr[1], +arr[2],
                 +document.getElementById("hiddenR").value, arr[3].toString().includes("true"));
         }
-        // if (document.getElementById("x" + arr[0]) !== null) {
-        //     document.getElementById("x" + arr[0]).style.color = '#fc0707';
-        // }
-        // document.getElementById("r" + arr[2]).style.color = '#fc0707';
     }
 }
+
 function checkConnection() {
     if (navigator.onLine) {
         return true;
@@ -62,24 +65,4 @@ function changeX(id) {
         }
     }
     document.getElementById("hiddenX").value = document.getElementById("x" + id).value;
-}
-
-function isValid () {
-    let message;
-
-    let Yinput = document.getElementById("Y");
-    let Y = Yinput.value.replace(",", ".");
-    document.getElementById("Y").value =  Y.toString();
-    if (Y  < -5 || Y > 5 || isNaN(Y) || Y === "" || Y.length > 7){
-        message = "Некорректно задано значение Y";
-    }
-    if (message) {
-        document.getElementById("errors").innerHTML = message;
-        Yinput.style.backgroundColor = '#FF4136';
-
-    } else {
-        document.getElementById("errors").innerHTML = "";
-        Yinput.style.backgroundColor = 'white';
-        return true;
-    }
 }

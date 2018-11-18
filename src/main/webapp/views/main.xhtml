@@ -14,7 +14,7 @@
         <h:outputScript library="js" name="graph.js" />
 
     </h:head>
-    <h:body onload="drawGraph(document.getElementById('hiddenR').value); drawAllDots()">
+    <h:body onload="initializeChart(); drawGraph(document.getElementById('hiddenR').value)">
         <div id="header" class="header">
             <div class="head">Группа P3212</div>
             <div class="head">Ибраимов Эдем, Морозов Иван</div>
@@ -61,6 +61,7 @@
                     <h:commandButton id="check" value="Проверить" onclick="checkConnection()" action="#{mainBean.addToList()}" styleClass="download" type="submit">
                         <f:ajax execute="main_form" onevent="addPointAfterRequest" render="canvas main_form results" />
                     </h:commandButton>
+
                 </h:form>
             </div>
         </div>
