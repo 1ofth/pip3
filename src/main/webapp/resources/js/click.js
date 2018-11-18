@@ -10,7 +10,7 @@ function clickHandler(event){
     let r = document.getElementById("hiddenR").value;
 
     if (r === "0.0") {
-        document.getElementById("errors").innerHTML = "Не указан радиус";
+        document.getElementById("odz_error").innerHTML = "R was not set";
         return;
     }
     if(isFinite(+r)){
@@ -24,7 +24,12 @@ function clickHandler(event){
         document.getElementById("hiddenX").value = xCoordinate;
         document.getElementById("Y").value = yCoordinate;
 
+        if(xCoordinate < -2 || xCoordinate > 2 || yCoordinate < -3 || yCoordinate > 3){
+            document.getElementById("odz_error").innerText="remember: -2<=x<=2, -3<=y<=3";
+            return;
+        }
+
+
         document.getElementById("check").click();
-        //drawDot(xCoordinate, yCoordinate, r, r);
     }
 }

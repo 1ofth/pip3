@@ -16,7 +16,7 @@ import java.util.List;
 public class MainBean implements Serializable{
     private double x = 0;
     private double y = 0;
-    private double r = 3;
+    private double r = 1;
     private String userID;
 
     public MainBean() {
@@ -132,7 +132,7 @@ public class MainBean implements Serializable{
         return "index.xhtml?faces-redirect=true";
     }
 
-    private  boolean checkArea(){
+    private boolean checkArea(){
         if(x<=0 && y>=0 && x*x+y*y<=r*r){
             return true;
         }

@@ -6,6 +6,7 @@ function initializeChart(){
 
 function addPointAfterRequest(data) {
     if (data.status === "complete") {
+        document.getElementById("odz_error").innerText = "" ;
         let arr = [4];
         let input = data.responseText.replace("<tr>", "").replace("</tr>", "");
         if (!input.includes("<span style=\"color:red\">Y")) {

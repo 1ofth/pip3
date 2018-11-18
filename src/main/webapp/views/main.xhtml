@@ -43,11 +43,12 @@
 
                     <p>Введите Y</p>
                     <h:inputText value = "#{mainBean.y}" id="Y" title="y"
-                                 validatorMessage="Enter correct Y (from -3 to 3)">
+                                validatorMessage="Enter correct Y (from -3 to 3)"
+                                converterMessage="Enter a number from -3 to 3">
                         <f:validateDoubleRange minimum="-3.0" maximum="3.0" for="Y"/>
                     </h:inputText>
                     <br/>
-                    <h:message  for="Y" style="color:red"/>
+                    <h:message  for="Y" style="color:red; font-size: 14px"/>
 
                     <p>Выберите R</p>
                     <h:commandButton id="r1" onclick="changeR(1)" styleClass="button" value="1" type="button"/>
@@ -62,6 +63,7 @@
                         <f:ajax execute="main_form" onevent="addPointAfterRequest" render="canvas main_form results" />
                     </h:commandButton>
 
+                    <h:outputText id="odz_error" style="color:red; font-size: 14px"/>
                 </h:form>
             </div>
         </div>
