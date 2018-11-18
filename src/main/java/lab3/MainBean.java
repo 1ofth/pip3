@@ -87,6 +87,9 @@ public class MainBean implements Serializable{
     public void addToList() {
         if (r < 0 || r > 5  || x < -2 || x > 2 || y < -3 || y > 5) return;
         try {
+            if(connection.isClosed()){
+                return;
+            }
             PreparedStatement pstmt = connection.prepareStatement("insert into points  values (points_seq.nextval, ?, ?, ?, ?, ?)");
             pstmt.setDouble(1, x);
             pstmt.setDouble(2, y);
@@ -103,6 +106,9 @@ public class MainBean implements Serializable{
     public List<Point> getList() {
         LinkedList<Point> llist = new LinkedList<Point>();
         try {
+            if(connection.isClosed()){
+                return null;
+            }
             PreparedStatement pstmt = connection.prepareStatement("select x, y, r, result from  points where session_id = ?");
             pstmt.setString(1, userID);
             ResultSet rs = pstmt.executeQuery();

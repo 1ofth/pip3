@@ -8,7 +8,9 @@
       xmlns:p="http://primefaces.org/ui" >
 <f:view>
     <h:head>
-        <title>JSF Title</title>
+        <title>Lab 3</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="main.css"/>
     </h:head>
     <h:body>
@@ -27,9 +29,8 @@
                 </div>
                 <p:poll interval="10" update="interactive_clock_time interactive_clock_date"/>
             </h:form>
-
-            <!-- // FIXME a problem is to make newline at this position -->
-
+        </div>
+        <div class="wrapper">
             <p:link id="next_page_link" value="Next page" outcome="toMain"/>
         </div>
     </h:body>
