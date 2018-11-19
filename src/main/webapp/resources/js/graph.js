@@ -40,8 +40,10 @@ function drawGraph(R){
     ctx.fillStyle = "lightblue";
 
     ctx.fillText("Рамочка - ОДЗ", 5, 25);
+
+
     ctx.beginPath();
-    ctx.arc(xOrtPosition, yOrtPosition, radios*indent, Math.PI, Math.PI*3/2);
+    ctx.arc(xOrtPosition, yOrtPosition, radios*indent/2, Math.PI*3/2, 0);
     ctx.lineTo(xOrtPosition, yOrtPosition);
     ctx.fill();
     ctx.closePath();
@@ -50,8 +52,8 @@ function drawGraph(R){
 
     ctx.beginPath();
     ctx.moveTo(xOrtPosition, yOrtPosition);
-    ctx.lineTo(xOrtPosition+radios*indent/2, yOrtPosition);
-    ctx.lineTo(xOrtPosition, yOrtPosition-radios*indent);
+    ctx.lineTo(xOrtPosition-radios*indent, yOrtPosition);
+    ctx.lineTo(xOrtPosition, yOrtPosition+radios*indent/2);
     ctx.fill();
     ctx.closePath();
 
@@ -59,7 +61,7 @@ function drawGraph(R){
 
     ctx.beginPath();
     ctx.moveTo(xOrtPosition, yOrtPosition+radios*indent);
-    ctx.rect(xOrtPosition-(radios*indent/2), yOrtPosition,radios*indent/2, radios*indent);
+    ctx.rect(xOrtPosition-(radios*indent), yOrtPosition,radios*indent, -radios*indent/2);
     ctx.fill();
     ctx.closePath();
 

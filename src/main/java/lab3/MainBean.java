@@ -44,7 +44,7 @@ public class MainBean implements Serializable{
             String login = "s243875";
             String password = "******";
             connection = DriverManager
-                    .getConnection("jdbc:oracle:thin:@localhost:1521/orbis", login, password);
+                    .getConnection("jdbc:oracle:thin:@localhost/orbis", login, password);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.exit(0);
@@ -133,13 +133,13 @@ public class MainBean implements Serializable{
     }
 
     private boolean checkArea(){
-        if(x<=0 && y>=0 && x*x+y*y<=r*r){
+        if(x<=0 && y>=0 && x>=-r && y <= r/2){
             return true;
         }
-        if(x<=0 && y<=0 && x>= -r/2 && y>=-r){
+        if(x<=0 && y<=0 &&  y>=-0.5*x-0.5){
             return true;
         }
-        if(x>=0 && y>=0 && y<= -2*x + r){
+        if(x>=0 && y>=0 && y*y + x*x <= (r/2)*(r/2) ){
             return true;
         }
         return false;
