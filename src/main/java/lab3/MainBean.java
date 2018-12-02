@@ -6,8 +6,6 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import java.io.Serializable;
 import java.sql.*;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -42,22 +40,14 @@ public class MainBean implements Serializable{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
             String login = "s243875";
-            String password = "******";
+            String password = "xic778";
             connection = DriverManager
-                    .getConnection("jdbc:oracle:thin:@localhost/orbis", login, password);
+                    .getConnection("jdbc:oracle:thin:@192.168.10.10/orbis", login, password);
         } catch (Exception e) {
             System.out.println(e.getMessage());
             System.exit(0);
         }
         System.out.println("connected to the Helios");
-    }
-
-    public String getTime(){
-        return (new SimpleDateFormat("HH:mm:ss")).format(new Date());
-    }
-
-    public String getDate() {
-        return (new SimpleDateFormat("dd.MM.yyyy")).format(new Date());
     }
 
     public void setX(double x) {
@@ -124,19 +114,11 @@ public class MainBean implements Serializable{
         return llist;
     }
 
-    public String toMain() {
-        return "main.xhtml?faces-redirect=true";
-    }
-
-    public String toIndex() {
-        return "index.xhtml?faces-redirect=true";
-    }
-
     private boolean checkArea(){
         if(x<=0 && y>=0 && x>=-r && y <= r/2){
             return true;
         }
-        if(x<=0 && y<=0 &&  y>=-0.5*x-0.5){
+        if(x<=0 && y<=0 &&  y>=-0.5*x-0.5*r){
             return true;
         }
         if(x>=0 && y>=0 && y*y + x*x <= (r/2)*(r/2) ){

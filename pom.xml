@@ -4,8 +4,8 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>pip3</groupId>
-  <artifactId>pip3</artifactId>
+  <groupId>pip3_testing</groupId>
+  <artifactId>pip3_testing</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
@@ -39,7 +39,7 @@
     <dependency>
       <groupId>org.primefaces</groupId>
       <artifactId>primefaces</artifactId>
-      <version>4.0</version>
+      <version>6.2</version>
     </dependency>
 
     <dependency>

@@ -8,12 +8,13 @@
       xmlns:p="http://primefaces.org/ui" >
 <f:view>
     <h:head>
-        <title>Lab 3</title>
+        <title>Lab 3 TEST</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <h:outputStylesheet library="css" name="main.css"/>
+        <h:outputScript library="js" name="clock.js"/>
     </h:head>
-    <h:body>
+    <h:body onload="makeClockUpdatable()">
         <div id="header" class="header">
             <div class="head">Группа P3212</div>
             <div class="head">Ибраимов Эдем, Морозов Иван</div>
@@ -21,17 +22,18 @@
         </div>
 
         <div class="wrapper">
-            <h:form>
+            <h:form id="clock_form">
                 <div id="clock">
-                    <h:outputText id="interactive_clock_time" value="${mainBean.time}"/>
+                    <h:outputText id="interactive_clock_time" value=""/>
                     <br/>
-                    <h:outputText id="interactive_clock_date" value="${mainBean.date}"/>
+                    <h:outputText id="interactive_clock_date" value=""/>
                 </div>
-                <p:poll interval="10" update="interactive_clock_time interactive_clock_date"/>
             </h:form>
+
+            <script type="application/javascript">updateClock();</script>
         </div>
         <div class="wrapper">
-            <p:link id="next_page_link" value="Next page" outcome="toMain"/>
+            <h:button id="next_page_link" value="Next page" outcome="toMain"/>
         </div>
     </h:body>
 </f:view>
