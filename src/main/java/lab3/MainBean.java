@@ -25,7 +25,7 @@ public class MainBean implements Serializable{
     @PreDestroy
     public void cleanDB() {
         try {
-            PreparedStatement pstmt = connection.prepareStatement("delete from points where session_id = ?;");
+            PreparedStatement pstmt = connection.prepareStatement("delete from points where session_id = ?");
             pstmt.setString(1, userID);
             pstmt.executeUpdate();
             pstmt.close();
@@ -40,7 +40,7 @@ public class MainBean implements Serializable{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
             String login = "s243875";
-            String password = "xic778";
+            String password = "******";
             connection = DriverManager
                     .getConnection("jdbc:oracle:thin:@192.168.10.10/orbis", login, password);
         } catch (Exception e) {

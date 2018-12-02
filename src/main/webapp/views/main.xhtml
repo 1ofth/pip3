@@ -60,7 +60,7 @@
                     <h:inputHidden id="hiddenR" value="#{mainBean.r}" />
                     <br/>
                     <h:commandButton id="check" value="Проверить" onclick="checkConnection()" action="#{mainBean.addToList()}" styleClass="download" type="submit">
-                        <f:ajax execute="main_form" onevent="addPointAfterRequest" render="canvas main_form results" />
+                        <f:ajax execute="main_form" onevent="addPointAfterRequest" render="canvas main_form results-box results" />
                     </h:commandButton>
 
                     <h:outputText id="odz_error" style="color:red; font-size: 14px"/>
@@ -72,7 +72,7 @@
 
             <div id="errors">
             </div>
-
+            <!--rendered="#{not empty mainBean.list}"-->
             <h:dataTable value = "#{mainBean.list}" var = "point" id = "results">
 
                 <h:column>
