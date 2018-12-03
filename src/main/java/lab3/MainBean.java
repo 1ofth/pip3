@@ -48,7 +48,7 @@ public class MainBean implements Serializable{
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
             String login = "s243875";
-            String password = "******";
+            String password = "xic778";
             connection = DriverManager
                     .getConnection("jdbc:oracle:thin:@192.168.10.10/orbis", login, password);
         } catch (Exception e) {
@@ -87,25 +87,9 @@ public class MainBean implements Serializable{
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unitP");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        A a = new A();
-        a.setName("abc");
-        a.setAge(15);
-
-        entityManager.persist(a);
-
-
-        ArrayList<B> bsss;
-        bsss = new ArrayList<B>();
-
-        for(int i = 0; i < 10; i++){
-            B b = new B();
-
-            b.setA(a);
-            entityManager.persist(b);
-        }
 
         AService aService = new AService();
-        A newA = aService.getA(entityManager, "abc");
+        A newA = aService.getA(entityManager, "qqq");
 
         return newA.getBs().size();
     }

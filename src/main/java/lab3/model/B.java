@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "A")
+@Table(name = "B")
 @Getter
 @Setter
 public class B {
@@ -15,7 +15,8 @@ public class B {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "a")
     private  A a;
 
 

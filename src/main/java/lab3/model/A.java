@@ -16,7 +16,7 @@ public class A {
     @Column(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "B")
+    @OneToMany(mappedBy = "id")
     private List<B> bs;
 
     @Column(name = "age")
