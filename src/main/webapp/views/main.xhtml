@@ -21,6 +21,7 @@
             <div class="head">Вариант 31517</div>
         </div>
 
+        <h:outputText value="#{mainBean.fuuuuBe()}"/>
         <div class="wrapper">
             <div class="left-column">
                 <canvas id="canvas" onclick="clickHandler(event)" width="400" height="400">
@@ -96,7 +97,7 @@
                 </h:column>
             </h:dataTable>
 
-            <h:button styleClass="download" value="Янки гоу хом" outcome="toIndex"/>
+            <p:link value="Янки гоу хом" outcome="toIndex"/>
         </div>
     </h:body>
 </f:view>

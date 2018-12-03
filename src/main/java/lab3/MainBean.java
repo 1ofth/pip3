@@ -1,11 +1,19 @@
 package lab3;
 
+import lab3.model.A;
+import lab3.model.B;
+
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import java.io.Serializable;
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -72,6 +80,34 @@ public class MainBean implements Serializable{
 
     public double getR() {
         return r;
+    }
+
+
+    public int fuuuuBe(){
+        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unitP");
+        EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+        A a = new A();
+        a.setName("abc");
+        a.setAge(15);
+
+        entityManager.persist(a);
+
+
+        ArrayList<B> bsss;
+        bsss = new ArrayList<B>();
+
+        for(int i = 0; i < 10; i++){
+            B b = new B();
+
+            b.setA(a);
+            entityManager.persist(b);
+        }
+
+        AService aService = new AService();
+        A newA = aService.getA(entityManager, "abc");
+
+        return newA.getBs().size();
     }
 
     public void addToList() {
