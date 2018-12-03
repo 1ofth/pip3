@@ -16,7 +16,7 @@ public class A {
     @Column(name = "id")
     private Long id;
 
-    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "a", fetch = FetchType.LAZY)
     private List<B> bs;
 
     @Column(name = "age")

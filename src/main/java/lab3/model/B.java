@@ -15,7 +15,7 @@ public class B {
     @Column(name = "id")
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "a")
     private  A a;
 

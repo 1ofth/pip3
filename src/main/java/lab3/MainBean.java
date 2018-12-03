@@ -83,15 +83,18 @@ public class MainBean implements Serializable{
     }
 
 
-    public int fuuuuBe(){
+    public String  fuuuuBe(){
         EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("unitP");
         EntityManager entityManager = entityManagerFactory.createEntityManager();
-
+        String answer = "";
 
         AService aService = new AService();
         A newA = aService.getA(entityManager, "qqq");
+        answer+= newA.getName()+ " " + newA.getBs().size() + "<br>";
+        for (B b : newA.getBs()) answer += b.getId() +"\n";
 
-        return newA.getBs().size();
+
+        return answer;
     }
 
     public void addToList() {
